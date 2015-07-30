@@ -1,7 +1,7 @@
 package sbtb.koolaid.sjs
 
 import org.scalajs.dom
-import dom.html
+import org.scalajs.dom.html
 
 object Utils {
   def toBigDecimal(given: Option[String]): BigDecimal =

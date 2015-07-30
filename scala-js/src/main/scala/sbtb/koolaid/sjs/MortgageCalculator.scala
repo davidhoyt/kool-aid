@@ -1,12 +1,12 @@
 package sbtb.koolaid.sjs
 
-import scala.collection.mutable
-import scalajs.js.annotation.JSExport
 import org.scalajs.dom
-import dom._
-import scalatags.JsDom.all.{html => _, _}
+import org.scalajs.dom._
+import sbtb.koolaid.sjs.Utils._
 
-import Utils._
+import scala.collection.mutable
+import scala.scalajs.js.annotation.JSExport
+import scalatags.JsDom.all.{html => _, _}
 
 @JSExport
 object MortgageCalculator extends App {

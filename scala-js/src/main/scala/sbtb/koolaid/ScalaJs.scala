@@ -1,13 +1,10 @@
 package sbtb.koolaid
 
+import org.scalajs.dom.html
 import org.scalajs.dom.raw.{MouseEvent, Node}
 
-import scala.io.StdIn
-import scalajs.js
-import scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.JSExport
 import scalatags.JsDom.all._
-import org.scalajs.dom
-import dom.html
 
 @JSExport
 object ScalaJs {
@@ -121,7 +118,7 @@ object ScalaJs {
       btn
     }
 
-    render()
+    render() //
     calculateMonthly()
   }
 }

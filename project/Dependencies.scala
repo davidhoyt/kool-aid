@@ -11,6 +11,7 @@ object dependencies {
   val akkaVersion = "2.3.12"
   val akkaStreamVersion = "1.0"
 
+  val scalaJsLibraryVersion = "0.6.4"
   val scalaJsDomVersion = "0.8.0"
   val scalaTagsVersion = "0.4.6"
   val monifuVersion = "1.0-M1"

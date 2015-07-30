@@ -26,6 +26,6 @@ object Formulas {
   }
   
   def main(args: Array[String]) = {
-    println(monthlyPayment(400000, 3.5, 15))
+    println(monthlyPayment(400000, 3.5, 15)) //
   }
 }

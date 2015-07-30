@@ -3,8 +3,10 @@ package sbtb.koolaid
 import cats.{Applicative, Comonad}
 
 import scala.io.StdIn
+import scala.scalajs.js.annotation.JSExport
 import scala.util.Try
 
+@JSExport
 object MortgageCalculator6 extends App {
 
   //Monad as a type class
