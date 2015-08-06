@@ -6,3 +6,4 @@
 target/
 
 /.koan.properties
+/twitter.conf

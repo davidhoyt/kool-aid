@@ -5,6 +5,8 @@ import org.scalajs.sbtplugin.ScalaJSPlugin
 import ScalaJSPlugin.autoImport._
 
 object dependencies {
+  val twitter4jVersion = "4.0.4"
+
   val catsVersion = "0.1.3-SNAPSHOT"
   val shapelessVersion = "2.2.4"
 
@@ -15,6 +17,10 @@ object dependencies {
   val scalaJsDomVersion = "0.8.0"
   val scalaTagsVersion = "0.4.6"
   val monifuVersion = "1.0-M1"
+
+  val autowireVersion = "0.2.5"
+  val uPickleVersion = "0.3.4"
+  val prickleVersion = "1.1.9"
 
   val scalaTestVersion = "2.2.4"
   val scalaCheckVersion = "1.12.2"
@@ -44,8 +50,10 @@ object dependencies {
     "com.typesafe.akka" %% "akka-stream-experimental" % akkaStreamVersion,
     "com.typesafe.akka" %% "akka-http-core-experimental" % akkaStreamVersion,
     "com.typesafe.akka" %% "akka-http-experimental" % akkaStreamVersion,
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaStreamVersion,
     //
-    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test
+    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
+    "com.typesafe.akka" %% "akka-http-testkit-experimental" % akkaStreamVersion % Test
   )
 
   val unitTesting = Seq(
