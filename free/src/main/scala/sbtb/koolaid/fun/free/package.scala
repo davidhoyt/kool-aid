@@ -1,4 +1,4 @@
-package sbtb.koolaid.logic
+package sbtb.koolaid.fun
 
 import scala.concurrent.{Future, Await, ExecutionContext}
 import scala.concurrent.duration.Duration

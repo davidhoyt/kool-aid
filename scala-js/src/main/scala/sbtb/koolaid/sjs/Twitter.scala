@@ -2,7 +2,7 @@ package sbtb.koolaid.sjs
 
 import org.scalajs.dom._
 import sbtb.koolaid._
-import sbtb.koolaid.logic.free._
+import sbtb.koolaid.fun.free._
 import sbtb.koolaid.twitter.client._
 
 import scala.collection.mutable

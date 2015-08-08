@@ -1,6 +1,6 @@
-package sbtb.koolaid.logic.free
+package sbtb.koolaid.fun.free
 
-import sbtb.koolaid.logic._
+import sbtb.koolaid.fun._
 
 import scala.concurrent.Future
 

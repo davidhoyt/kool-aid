@@ -1,6 +1,6 @@
 package sbtb.koolaid
 
-import sbtb.koolaid.logic.free._
+import sbtb.koolaid.fun.free._
 import sbtb.koolaid.twitter.client._
 
 import scala.concurrent.{Await, Future}
@@ -32,6 +32,25 @@ object TwitterStep2 extends JvmApp {
     }}
   }
 
+  case class FlightRecorder[F[_]](evaluator: Evaluator[F])(atMost: Duration) extends Evaluator[F] {
+    var record = List.empty[Any]
+
+    override def evaluate[A](given: F[A]): A = {
+      val result = evaluator.evaluate(given)
+      val recordResult = result match {
+        case f: Future[_] => Await.result(f, atMost)
+        case x => x
+      }
+      record = record :+ recordResult
+      result
+    }
+  }
+
   runFreeAndAwait(Programs.twitter)(StandardEvaluator)(1.minute)
   //runFreeAndAwait(Programs.twitter)(TestEvaluator("test"))(1.minute)
+
+  //val recorder = FlightRecorder(StandardEvaluator)(1.minute)
+  ////val recorder = FlightRecorder(TestEvaluator("test"))(1.minute)
+  //runFreeAndAwait(Programs.twitter)(recorder)(1.minute)
+  //println(s"Results: ${recorder.record}")
 }

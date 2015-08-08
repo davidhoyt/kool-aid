@@ -1,14 +1,10 @@
-package sbtb.koolaid.logic
+package sbtb.koolaid.fun.std
 
-import scala.concurrent.{Future, ExecutionContext}
+import sbtb.koolaid.fun._
 
-trait Functor[F[_]] {
-  def map[A, B](fa: F[A])(fn: A => B): F[B]
-}
+import scala.concurrent.{ExecutionContext, Future}
 
-object Functor {
-
-  def apply[F[_]: Functor] = implicitly[Functor[F]]
+trait FunctorInstances {
 
   implicit object id extends Functor[Id] {
     override def map[A, B](fa: Id[A])(fn: A => B): Id[B] =
@@ -18,6 +14,11 @@ object Functor {
   implicit object function0 extends Functor[Function0] {
     override def map[A, B](fa: () => A)(fn: A => B): () => B =
       () => fn(fa())
+  }
+
+  implicit object option extends Functor[Option] {
+    override def map[A, B](fa: Option[A])(fn: A => B): Option[B] =
+      fa map fn
   }
 
   implicit def future(implicit executionContext: ExecutionContext): Functor[Future] = new Functor[Future] {

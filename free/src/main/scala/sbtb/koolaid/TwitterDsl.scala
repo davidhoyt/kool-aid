@@ -1,6 +1,6 @@
 package sbtb.koolaid
 
-import sbtb.koolaid.logic.free._
+import sbtb.koolaid.fun.free._
 import sbtb.koolaid.twitter.client._
 
 import scala.concurrent.Future

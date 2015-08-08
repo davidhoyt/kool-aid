@@ -1,4 +1,4 @@
-package sbtb.koolaid.logic.free
+package sbtb.koolaid.fun.free
 
 sealed trait Free[F[_], A] { self =>
   def map[B](fn: A => B): Free[F, B] =

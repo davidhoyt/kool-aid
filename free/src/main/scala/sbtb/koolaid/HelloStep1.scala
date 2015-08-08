@@ -7,3 +7,7 @@ object HelloStep1 extends JvmApp {
   val name = readPrompt("Conan")
   prompt(s"Hello $name")
 }
+
+// flight recorder
+
+// slides for free monoids, free functor (coyoneda)

@@ -1,13 +1,12 @@
-package sbtb.koolaid.logic
+package sbtb.koolaid.fun.std
+
+import sbtb.koolaid.fun._
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
-trait Copointed[M[_]] {
-  def copoint[A](m: M[A]): A
-}
+trait CopointedInstances {
 
-object Copointed {
   implicit object id extends Copointed[Id] {
     override def copoint[A](m: Id[A]): A = m
   }
@@ -19,4 +18,5 @@ object Copointed {
   implicit def future[A](implicit duration: Duration): Copointed[Future] = new Copointed[Future] {
     override def copoint[A](future: Future[A]): A = Await.result(future, duration)
   }
+
 }
