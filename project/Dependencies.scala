@@ -9,6 +9,7 @@ object dependencies {
 
   val catsVersion = "0.1.3-SNAPSHOT"
   val shapelessVersion = "2.2.4"
+  val scalazVersion = "7.1.3"
 
   val akkaVersion = "2.3.12"
   val akkaStreamVersion = "1.0"

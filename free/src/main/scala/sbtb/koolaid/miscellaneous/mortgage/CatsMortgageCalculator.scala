@@ -1,6 +1,8 @@
-package sbtb.koolaid
+package sbtb.koolaid.miscellaneous.mortgage
 
-import cats._, free._, Free._
+import cats._
+import cats.free.Free._
+import cats.free._
 
 import scala.io.StdIn
 

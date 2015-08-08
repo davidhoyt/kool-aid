@@ -1,4 +1,4 @@
-package sbtb.koolaid
+package sbtb.koolaid.miscellaneous
 
 // co yo nay duh: http://hearnames.com/pronunciations/japanese-names/japanese-surnames/yoneda
 // pee ah no: https://www.youtube.com/watch?v=XJfzs89i4CQ
@@ -12,25 +12,7 @@ object Peano extends App {
   case object Zero extends Nat
   case class Succ(prev: Nat) extends Nat
 
-  val _0 = Zero
-//  val _1 = Succ(Zero)
-//  val _2 = Succ(Succ(Zero))
-//  val _3 = Succ(Succ(Succ(Zero)))
-  val _1 = Succ(_0)
-  val _2 = Succ(_1)
-  val _3 = Succ(_2)
-  val _4 = Succ(_3)
-
-  def create(number: Int): Nat = {
-    def step(soFar: Int, n: Nat): Nat = soFar match {
-      case _ if soFar < number => step(soFar + 1, Succ(n))
-      case _ => n
-    }
-    require(number >= 0)
-    step(0, Zero)
-  }
-
-  def number(n: Nat): Int = {
+  def toInt(n: Nat): Int = {
     def step(soFar: Int, n: Nat): Int = n match {
       case Zero => soFar
       case Succ(next) => step(soFar + 1, next)
@@ -39,12 +21,30 @@ object Peano extends App {
     step(0, n)
   }
 
-  println(create(0))
-  println(create(1))
-  println(create(2))
-  println(create(100))
-  println(number(Succ(Succ(Zero))))
-  println(number(create(100)))
+  def fromInt(number: Int): Nat = {
+    def step(soFar: Int, n: Nat): Nat = soFar match {
+      case _ if soFar < number => step(soFar + 1, Succ(n))
+      case _ => n
+    }
 
-  // test
+    require(number >= 0)
+    step(0, Zero)
+  }
+
+  val _0 = Zero
+  val _1 = Succ(Zero)
+  val _2 = Succ(Succ(Zero))
+  val _3 = Succ(Succ(Succ(Zero)))
+
+  assert(_0 == fromInt(0))
+  assert(_1 == fromInt(1))
+  assert(_2 == fromInt(2))
+  assert(_3 == fromInt(3))
+
+  assert(0 == toInt(_0))
+  assert(1 == toInt(_1))
+  assert(2 == toInt(_2))
+  assert(3 == toInt(_3))
+
+  println(fromInt(6))
 }

@@ -1,4 +1,4 @@
-package sbtb.koolaid
+package sbtb.koolaid.miscellaneous.mortgage
 
 //We'll create a trait named "IO" and add a map and flatMap method so we can compose IO
 //instances with for comprehensions. We'll then add a new method called "run" which returns Unit

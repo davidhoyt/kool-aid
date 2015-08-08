@@ -1,4 +1,4 @@
-package sbtb.koolaid
+package sbtb.koolaid.miscellaneous.mortgage
 
 object Formulas {
   import scala.math._

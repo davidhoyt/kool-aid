@@ -1,5 +1,5 @@
-package sbtb
+package sbtb.koolaid.miscellaneous
 
-package object koolaid {
+package object mortgage {
   implicit def convertString(given: String): Option[String] = Option(given)
 }

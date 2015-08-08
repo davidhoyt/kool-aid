@@ -1,6 +1,4 @@
-package sbtb.koolaid
-
-import cats.{Applicative, Comonad}
+package sbtb.koolaid.miscellaneous.mortgage
 
 import scala.io.StdIn
 import scala.scalajs.js.annotation.JSExport
@@ -85,8 +83,6 @@ object MortgageCalculator6 extends App {
   }
 
   import scala.concurrent._
-  import scala.concurrent.duration.DurationInt
-  import ExecutionContext.Implicits.global
 
   implicit def Concurrently(implicit ec: ExecutionContext): Monad[Future] = new Monad[Future] {
     override def unit[A](given: A): Future[A] =

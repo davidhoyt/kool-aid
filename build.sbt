@@ -24,7 +24,8 @@ lazy val free = (project in file("free"))
     moduleName := "free",
     libraryDependencies ++= { Seq(
         "com.chuusai" %%% "shapeless" % shapelessVersion,
-        "org.spire-math" %% "cats" % catsVersion
+        "org.spire-math" %% "cats" % catsVersion,
+        "org.scalaz" %% "scalaz-core" % scalazVersion
       ) ++
       unitTesting
     }
@@ -63,6 +64,7 @@ lazy val `twitter-client` = (project in file("twitter-client"))
         "com.chuusai" %% "shapeless" % shapelessVersion,
         "org.spire-math" %% "cats" % catsVersion,
         "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
+        "com.lihaoyi" %%% "scalatags" % scalaTagsVersion,
         "com.lihaoyi" %%% "autowire" % autowireVersion,
         "com.lihaoyi" %%% "upickle" % uPickleVersion,
         "com.github.benhutchison" %%% "prickle" % prickleVersion

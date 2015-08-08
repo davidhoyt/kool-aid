@@ -1,6 +1,4 @@
-package sbtb.koolaid
-
-import scala.io.StdIn
+package sbtb.koolaid.miscellaneous.mortgage
 
 //Mortgage amount
 //Annual interest rate (%)

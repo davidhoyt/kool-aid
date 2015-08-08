@@ -5,8 +5,9 @@ package sbtb.koolaid.twitter
 import akka.actor.ActorSystem
 import akka.event.{LoggingAdapter, Logging}
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.headers.RawHeader
+import akka.http.scaladsl.model.HttpRequest
 import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.server.directives.LoggingMagnet
 import akka.stream.{ActorMaterializer, Materializer}
 import akka.stream.scaladsl.Source
 import com.typesafe.config.Config
@@ -51,10 +52,12 @@ trait Service {
   val routes = {
     pathPrefix("tweets") {
       (get & path(Segment)) { screenNames =>
-        complete {
-          import prickle._
+        logRequest("tweets") {
+          complete {
+            import prickle._
 
-          tweets(screenNames.split(',').toSeq) map (x => Pickle.intoString(x))
+            tweets(screenNames.split(',').toSeq) map (x => Pickle.intoString(x))
+          }
         }
       }
     } ~
