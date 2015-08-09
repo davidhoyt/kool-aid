@@ -1,22 +1,24 @@
 package sbtb.koolaid.miscellaneous.mortgage
 
+import scala.io.StdIn
+
 //Mortgage amount
 //Annual interest rate (%)
 //Mortgage period (in years)
 object MortgageCalculator2 extends App {
   def retrievePrincipal(): BigDecimal = {
     println("Mortgage amount (principal):")
-    BigDecimal(readLine())
+    BigDecimal(StdIn.readLine())
   }
 
   def retrieveAnnualInterestRate(): BigDecimal = {
     println("Annual interest rate (%):")
-    BigDecimal(readLine())
+    BigDecimal(StdIn.readLine())
   }
 
   def retrievePeriod(): Int = {
     println("Mortgage period (in years):")
-    readLine().toInt
+    StdIn.readLine().toInt
   }
 
   val monthlyPayment = Formulas.monthlyPayment(retrievePrincipal(), retrieveAnnualInterestRate(), retrievePeriod())

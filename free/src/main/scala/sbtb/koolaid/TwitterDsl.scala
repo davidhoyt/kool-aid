@@ -11,6 +11,7 @@ object TwitterDsl {
 
   case class Tell(prompt: String, default: String) extends Instruction[Unit]
   case class Ask(default: String) extends Instruction[String]
+
   case class GetTweets(screenNames: Seq[String]) extends Instruction[Future[Seq[Tweets]]]
   case class DisplayTweets(tweets: Future[Seq[Tweets]]) extends Instruction[Future[Unit]]
 

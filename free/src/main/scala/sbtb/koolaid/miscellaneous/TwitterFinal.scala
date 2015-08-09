@@ -1,12 +1,13 @@
-package sbtb.koolaid
+package sbtb.koolaid.miscellaneous
 
+import sbtb.koolaid._
 import sbtb.koolaid.fun.free._
 import sbtb.koolaid.twitter.client._
 
-import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 
-object TwitterStep2 extends JvmApp {
+object TwitterFinal extends JvmApp {
   import TwitterDsl._
   
   object StandardEvaluator extends Evaluator[Instruction] {

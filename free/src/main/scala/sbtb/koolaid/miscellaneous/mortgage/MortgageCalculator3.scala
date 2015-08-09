@@ -1,5 +1,7 @@
 package sbtb.koolaid.miscellaneous.mortgage
 
+import scala.io.StdIn
+
 //We'll create a trait named "IO" and add a map and flatMap method so we can compose IO
 //instances with for comprehensions. We'll then add a new method called "run" which returns Unit
 //to indicate that it's side effecting. Run will actually evaluate the side-effecting logic.
@@ -28,11 +30,11 @@ object MortgageCalculator3 extends App {
   //We'll isolate output statements to their own IO instance and then compose them together to calculate the monthly payment.
   val calculateMonthly =
     PrintLine("Mortgage amount (principal):") flatMap { _ =>
-      val principal = BigDecimal(readLine())
+      val principal = BigDecimal(StdIn.readLine())
       PrintLine("Annual interest rate (%):") flatMap { _ =>
-        val interestRate = BigDecimal(readLine())
+        val interestRate = BigDecimal(StdIn.readLine())
         PrintLine("Mortgage period (in years):") flatMap { _ =>
-          val period = readLine().toInt
+          val period = StdIn.readLine().toInt
           val monthlyPayment = Formulas.monthlyPayment(principal, interestRate, period)
           PrintLine(s"Your monthly payment will be $$${monthlyPayment.doubleValue()}")
         }

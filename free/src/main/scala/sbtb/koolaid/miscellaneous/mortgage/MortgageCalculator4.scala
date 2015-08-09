@@ -1,5 +1,7 @@
 package sbtb.koolaid.miscellaneous.mortgage
 
+import scala.io.StdIn
+
 //We'll start off by generalizing IO through the addition of a type parameter.
 object MortgageCalculator4 extends App {
   trait IO[A] { self =>
@@ -23,7 +25,7 @@ object MortgageCalculator4 extends App {
 
   //Let's add ReadLine
   def ReadLine(): IO[String] = new IO[String] {
-    override def run(): String = readLine()
+    override def run(): String = StdIn.readLine()
   }
 
   def ReadLineEx[A]()(implicit convert: String => A): IO[A] =

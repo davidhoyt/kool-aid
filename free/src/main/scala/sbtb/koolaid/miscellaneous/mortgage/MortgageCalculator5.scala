@@ -1,5 +1,7 @@
 package sbtb.koolaid.miscellaneous.mortgage
 
+import scala.io.StdIn
+
 object MortgageCalculator5 extends App {
   sealed trait IO[A] { self =>
     def run: A
@@ -30,7 +32,7 @@ object MortgageCalculator5 extends App {
 
   //Let's add ReadLine
   def ReadLine(): IO[String] = new IO[String] {
-    override def run(): String = readLine()
+    override def run(): String = StdIn.readLine()
   }
 
   //And then use a for comprehension to put it all together.

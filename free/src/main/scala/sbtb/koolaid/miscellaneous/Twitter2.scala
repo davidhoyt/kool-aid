@@ -1,10 +1,10 @@
-package sbtb.koolaid
+package sbtb.koolaid.miscellaneous
 
 import sbtb.koolaid.twitter.client._
 
 import scala.concurrent.Future
 
-object TwitterStep1 extends JvmApp {
+object Twitter2 extends JvmApp {
   trait IO[A] { self =>
     def run: A
 
