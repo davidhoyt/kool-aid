@@ -6,8 +6,10 @@ addCommandAlias("run-scala-js", "; project scala-js ; ~fastOptJS")
 lazy val `sbtb-koolaid-root` = (project in file("."))
   .aggregate(`twitter-client`, free, `scala-js`, `twitter-server`)
   .dependsOn(`twitter-client`, free, `scala-js`, `twitter-server`)
+  .enablePlugins(SbtKoan)
   .settings(sbtb.koolaid.publish.ignoreSettings())
   .settings(sbtb.koolaid.build.settings())
+  .settings(sbtb.koolaid.koan.settings())
   .settings(Seq(
     name := "drinking the free kool aid",
     moduleName := "sbtb-koolaid"
