@@ -10,7 +10,8 @@ cd ../..
 
 mkdir -p "/tmp/steps/"
 
-sbt "koan init" > /tmp/steps/last.out
+git reset --hard > /tmp/steps/last.out
+sbt "koan init" >> /tmp/steps/last.out
 git clean -fd >> /tmp/steps/last.out
 
 cd "$curr"

@@ -6,7 +6,8 @@ cd ../..
 
 mkdir -p "/tmp/steps/"
 
-sbt "koan last" > /tmp/steps/last.out
+git reset --hard > /tmp/steps/last.out
+sbt "koan last" >> /tmp/steps/last.out
 git clean -fd >> /tmp/steps/last.out
 
 cd "$curr"
