@@ -15,16 +15,16 @@ object WOPR extends JvmApp {
     }
   }
 
-  object ConsoleIO {
-    sealed trait ConsoleIO[A] extends IO[A]
-    case class Tell(text: String, default: String) extends ConsoleIO[Unit] { def run = prompt(text, default) }
-    case class Ask(default: String) extends ConsoleIO[String] { def run = readPrompt(default)}
+  object Interacts {
+    sealed trait Interacts[A] extends IO[A]
+    case class Tell(text: String, default: String) extends Interacts[Unit] { def run = prompt(text, default) }
+    case class Ask(default: String) extends Interacts[String] { def run = readPrompt(default)}
 
-    def tell(text: String, default: String = ""): ConsoleIO[Unit] = Tell(text, default)
-    def ask(default: String): ConsoleIO[String] = Ask(default)
+    def tell(text: String, default: String = ""): Interacts[Unit] = Tell(text, default)
+    def ask(default: String): Interacts[String] = Ask(default)
   }
 
-  import ConsoleIO._
+  import Interacts._
 
   val program: IO[Unit] =
     for {
