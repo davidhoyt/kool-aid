@@ -1,0 +1,10 @@
+!.gitignore
+
+/.idea/
+/project/project/
+/project/target/
+target/
+
+/.koan.properties
+/.tag.txt
+/twitter.conf

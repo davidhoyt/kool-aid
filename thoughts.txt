@@ -1,0 +1,8 @@
+
+Discuss referential transparency
+
+Inside every impure function is a pure function waiting to get out
+Runar Bjarnason
+Functional programming principles in Scala
+
+Start with an impure program
