@@ -2,10 +2,10 @@ package sbtb.koolaid.fun.free
 
 sealed trait Free[F[_], A] { self =>
   def map[B](fn: A => B): Free[F, B] =
-    ???
+    flatMap(a => Return(fn(a)))
 
   def flatMap[B](fn: A => Free[F, B]): Free[F, B] =
-    ???
+    FlatMap(self, (a: A) => fn(a))
 }
 
 case class Return[F[_], A](value: A) extends Free[F, A]
