@@ -8,15 +8,12 @@ object WOPR extends JvmApp {
 
   object Interacts {
     sealed trait Interacts[A]
-    implicit object interactsFunctor extends Functor[Interacts] {
-      override def map[A, B](fa: Interacts[A])(fn: A => B): Interacts[B] = ???
-    }
 
     case class Tell(text: String, default: String) extends Interacts[Unit]
     case class Ask(default: String) extends Interacts[String]
 
-    def tell(text: String, default: String = ""): Free[Interacts, Unit] = ???
-    def ask(default: String): Free[Interacts, String] = ???
+    def tell(text: String, default: String = ""): Free[Interacts, Unit] = Suspend(Tell(text, default))
+    def ask(default: String): Free[Interacts, String] = Suspend(Ask(default))
   }
 
   import Interacts._
@@ -28,5 +25,27 @@ object WOPR extends JvmApp {
          _ <- tell(s"GREETINGS ${name.toUpperCase}. SHALL WE PLAY A GAME?")
     } yield ()
 
-  runNaive(program)
+  object standardIO extends (Interacts ~> Id) {
+    override def apply[A](given: Interacts[A]): Id[A] = given match {
+      case Tell(text, default) => prompt(text, default)
+      case Ask(default) => readPrompt(default)
+    }
+  }
+
+  def testIO(answers: String*): (Interacts ~> Id) = new (Interacts ~> Id) {
+    var remaining = answers
+
+    override def apply[A](given: Interacts[A]): Id[A] = given match {
+      case Tell(text, default) =>
+        prompt(text, default)
+
+      case Ask(default) =>
+        val response = remaining.head
+        remaining = remaining.tail
+        response
+    }
+  }
+
+  runFree(program)(standardIO)
+  //runFree(program)(testIO("Haskell Curry"))
 }

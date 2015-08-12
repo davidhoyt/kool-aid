@@ -9,4 +9,5 @@ sealed trait Free[F[_], A] { self =>
 }
 
 case class Return[F[_], A](value: A) extends Free[F, A]
+case class Suspend[F[_], A](given: F[A]) extends Free[F, A]
 case class FlatMap[F[_], A, B](given: Free[F, A], fn: A => Free[F, B]) extends Free[F, B]
