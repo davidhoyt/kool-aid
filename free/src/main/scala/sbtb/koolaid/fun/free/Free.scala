@@ -7,3 +7,6 @@ sealed trait Free[F[_], A] { self =>
   def flatMap[B](fn: A => Free[F, B]): Free[F, B] =
     ???
 }
+
+case class Return[F[_], A](value: A) extends Free[F, A]
+case class FlatMap[F[_], A, B](given: Free[F, A], fn: A => Free[F, B]) extends Free[F, B]
