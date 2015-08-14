@@ -2,6 +2,7 @@ package sbtb.koolaid.sjs
 
 import org.scalajs.dom._
 import sbtb.koolaid._
+import sbtb.koolaid.fun._
 import sbtb.koolaid.fun.free._
 import sbtb.koolaid.twitter.client._
 
@@ -16,8 +17,8 @@ import scalatags.JsDom.all.{html => _, _}
 object Twitter extends ScalaJsApp {
   import TwitterDsl._
 
-  case class ScalaJsRenderer(list: mutable.Buffer[Node]) extends Evaluator[Instruction] {
-    override def evaluate[A](given: Instruction[A]): A = given match {
+  case class ScalaJsRenderer(list: mutable.Buffer[Node]) extends (Instruction ~> Id) {
+    override def apply[A](given: Instruction[A]): Id[A] = given match {
       case Tell(text, default) => renderPrompt(list, text, default)
       case Ask(default) => renderReadPrompt(list, default) ; default
       case GetTweets(screenNames) => Future(Seq())
@@ -25,9 +26,9 @@ object Twitter extends ScalaJsApp {
     }
   }
 
-  case class ScalaJsEvaluator(buffer: html.Div) extends Evaluator[Instruction] {
+  case class ScalaJsEvaluator(buffer: html.Div) extends (Instruction ~> Id) {
     var count = -1
-    override def evaluate[A](given: Instruction[A]): A = {
+    override def apply[A](given: Instruction[A]): Id[A] = {
       count += 1
       given match {
         case Tell(text, default) => ()
